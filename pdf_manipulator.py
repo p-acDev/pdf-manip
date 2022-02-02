@@ -2,7 +2,6 @@ import sys
 from PyQt5 import QtWidgets, QtGui, QtCore
 from gui_pdf_manipulator import Ui_MainWindow
 from gui_removePages import Ui_RemovePagesWindow
-from pikepdf import Pdf, _cpphelpers
 from time import sleep
 import os
 import sys
