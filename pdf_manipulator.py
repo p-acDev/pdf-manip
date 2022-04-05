@@ -3,22 +3,21 @@ from time import sleep
 import os
 import sys
 from pikepdf import Pdf
+import streamlit as st
 import version
-from urllib.parse import quote
 
 def merge(pdfs):
     
     # buil an empty pdf
-    pdf = Pdf.new()
+    fusion = Pdf.new()
 
     # loop over each pdf
     for _pdf in pdfs:
         src = Pdf.open(_pdf)
         # add all pages of the open pdf to the new created pdf 
-        pdf.pages.extend(src.pages)
-        #pdf.save('merged.pdf')
+        fusion.pages.extend(src.pages)
     
-    return pdf
+    return fusion
 
 def preview(pdf_name):
     
@@ -58,3 +57,18 @@ def remove_pages(pdf_name, pages):
 
 
     return None
+
+st.write("# pdf-manip")
+
+pdfs = st.file_uploader("Chargez vos fichiers pdf à fusionner", accept_multiple_files=True)
+
+if pdfs is not None:
+
+    if st.button("Fusionner"):
+
+        fusion = merge(pdfs)
+        
+        fusion.save("fusion.pdf")
+
+
+    
