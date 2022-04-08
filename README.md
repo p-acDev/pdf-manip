@@ -6,11 +6,14 @@
 
 # Installation
 
-Il faut juste executer la commande:
+Pour une installation de l'app en local
+
+## Installation des modules python
 
 `pip install -r requirements.txt`
 
 ## OCR 
+
 à ajouter sur windows si app en local
 ```
 pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesseract.exe'
