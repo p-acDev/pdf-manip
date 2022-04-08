@@ -89,9 +89,8 @@ def gui():
             if st.button("Fusionner"):
 
                 fusion = merge(pdfs)
-    
+                fusion.save("fusion.pdf")
                 st.success("PDF fusionné")
-
 
                 with open("fusion.pdf", 'rb') as f:
                     PDFbyte = f.read()
