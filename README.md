@@ -10,23 +10,6 @@ Il faut juste executer la commande:
 
 `pip install -r requirements.txt`
 
-## Problème avec `PyQt5` sur mac os puce M1
-
-Il faut installer PyQt5 avec brew puis ajouter au path les chemins
-
-```
-brew install pyqt5
-echo 'export PATH="/opt/homebrew/opt/qt@5/bin:$PATH"' >> ~/.zshrc
-echo 'export PATH="/opt/homebrew/opt/pyqt@5/5.15.4_1/bin:$PATH"' >> ~/.zshrc
-source ~/.zshrc
-```
-
-et ensuite faire:
-
-`pip install pyqt5`
-
-:point_right: https://stackoverflow.com/a/70296259/14823310
-
 ## OCR 
 à ajouter sur windows si app en local
 ```
