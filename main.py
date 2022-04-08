@@ -1,8 +1,22 @@
 import PyPDF2
+from pikepdf import Pdf
 from pdf2image import convert_from_path, convert_from_bytes
 import pytesseract
 import re
 import streamlit as st
+
+def merge(pdfs):
+    
+    # buil an empty pdf
+    fusion = Pdf.new()
+
+    # loop over each pdf
+    for _pdf in pdfs:
+        src = Pdf.open(_pdf)
+        # add all pages of the open pdf to the new created pdf 
+        fusion.pages.extend(src.pages)
+    
+    return fusion
 
 def extract_text_from_pdf_simple(filename):
 
@@ -37,27 +51,56 @@ def write_output(data, targets):
 
 def gui():
 
-    st.write("# PDF sniffer")
+    st.write("# Outils pour manipuler les pdf")
 
-    pdf_file = st.file_uploader("Chargez votre pdf")
+    choice = st.sidebar.selectbox("Selectionner votre besoin",
+    ("-", "fusion", "extraction de texte"))
+
+    if choice == "extraction de texte":
+
+        st.write("# PDF sniffer")
+
+        pdf_file = st.file_uploader("Chargez votre pdf")
+        
+        if pdf_file is not None:
+            binary = pdf_file.getvalue()
+
+        targets = st.text_input("Entrez vos recherches séparées par des ','")
+
+        if targets is not None:
+            targets = targets.split(',')
+        
+        if st.button("Lancer la recherche") and pdf_file is not None and targets is not None:
+            with st.spinner("Wait for it ..."):
+
+                data = extract_text_from_pdf_ocr(binary)
+                output = write_output(data, targets)
+
+                st.success("Recherche terminée")
+                st.text(output)
     
-    if pdf_file is not None:
-        binary = pdf_file.getvalue()
+    elif choice == "fusion":
+        st.write("# pdf-fusion")
 
-    targets = st.text_input("Entrez vos recherches séparées par des ','")
+        pdfs = st.file_uploader("Chargez vos fichiers pdf à fusionner", accept_multiple_files=True)
 
-    if targets is not None:
-        targets = targets.split(',')
+        if pdfs is not None:
+
+            if st.button("Fusionner"):
+
+                fusion = merge(pdfs)
     
-    if st.button("Lancer la recherche") and pdf_file is not None and targets is not None:
-        with st.spinner("Wait for it ..."):
+                fusion.save("fusion.pdf")
+                with open("fusion.pdf", 'rb') as f:
+                    PDFbyte = f.read()
 
-            data = extract_text_from_pdf_ocr(binary)
-            output = write_output(data, targets)
+                st.download_button(label="download",
+                data=PDFbyte,
+                file_name="fusion.pdf",
+                mime='application/octet-stream')
+                st.success("retrouvez votre pdf fusionné dans votre dossier")
 
-            st.success("Recherche terminée")
-            st.text(output)
-    
+
     return None
 
 if __name__ == "__main__":
