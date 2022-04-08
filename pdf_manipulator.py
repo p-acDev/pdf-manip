@@ -1,37 +1,23 @@
 import sys
-from PyQt5 import QtWidgets, QtGui, QtCore
-from gui_pdf_manipulator import Ui_MainWindow
-from gui_removePages import Ui_RemovePagesWindow
 from time import sleep
 import os
 import sys
+from pikepdf import Pdf
+import streamlit as st
 import version
-from urllib.parse import quote
-
-
-def resource_path(relative_path):
-    """ Get the absolute path to the resource, works for dev and for PyInstaller """
-    try:
-        # PyInstaller creates a temp folder and stores path in _MEIPASS
-        base_path = sys._MEIPASS
-    except Exception:
-        base_path = os.path.abspath(".")
-
-    return os.path.join(base_path, relative_path)
 
 def merge(pdfs):
     
     # buil an empty pdf
-    pdf = Pdf.new()
+    fusion = Pdf.new()
 
     # loop over each pdf
     for _pdf in pdfs:
         src = Pdf.open(_pdf)
         # add all pages of the open pdf to the new created pdf 
-        pdf.pages.extend(src.pages)
-        #pdf.save('merged.pdf')
+        fusion.pages.extend(src.pages)
     
-    return pdf
+    return fusion
 
 def preview(pdf_name):
     
@@ -72,199 +58,17 @@ def remove_pages(pdf_name, pages):
 
     return None
 
-class PdfManipulator:
+st.write("# pdf-manip")
 
+pdfs = st.file_uploader("Chargez vos fichiers pdf à fusionner", accept_multiple_files=True)
 
-    def __init__(self):
+if pdfs is not None:
 
-        # initialisation of gui
-        self._gui = QtWidgets.QApplication(sys.argv)
-        self._MainWindow = QtWidgets.QMainWindow()
-        self._ui = Ui_MainWindow()
-        self._ui.setupUi(self._MainWindow)
+    if st.button("Fusionner"):
 
-        self._MainWindow.setWindowTitle("PDF manipulator")
+        fusion = merge(pdfs)
         
-        self.file_logo = "./favicon-32x32.png"
-        self._MainWindow.setWindowIcon(QtGui.QIcon(resource_path(self.file_logo)))
-        self._MainWindow.setIconSize(QtCore.QSize(200, 200))
-
-        self._MainWindow.show()
-
-        self.pdf_files = None
-        
-        # do the initialization of gui 
-        self.initialize()
-
-        sys.exit(self._gui.exec_())
-
-    def initialize(self):
+        fusion.save("fusion.pdf")
 
 
-        self._actions_push_buttons()
-
-        # version
-        self._ui.label_version.setText("version: v{}".format(version.__version__))
-
-        # author
-        self._ui.label_author.setText("author: {}".format(version.__author__))
-        
-        # logo
-        pixmax = QtGui.QPixmap(resource_path("./logo.png"))
-        self._ui.label_logo.setPixmap(pixmax)
-        self._ui.label_logo.resize(pixmax.width(), pixmax.height())
-
-        return None
-
-    def _actions_push_buttons(self):
-        """ do the connection for all buttons
-        """
-        self._ui.pushButton_browse.clicked.connect(self._get_files)
-        self._ui.pushButton_merge.clicked.connect(self._merge)
-        self._ui.pushButton_removeFile.clicked.connect(self._remove_file)
-        self._ui.pushButton_preview.clicked.connect(self._preview)
-        self._ui.pushButton_removePages.clicked.connect(self._removePagesWindow)
-
-        
-        return None
-
-    def _get_selected_pdf(self):
-
-        try:
-            index = self._ui.treeWidget_filenames.selectedIndexes()[0]
-            _dir = self._ui.treeWidget_filenames.invisibleRootItem().child(index.row()).text(1)
-            _filename = self._ui.treeWidget_filenames.invisibleRootItem().child(index.row()).text(2)
-            pathname = os.path.join(_dir, _filename)
-        except IndexError:
-            pathname = ""
     
-        return pathname
-
-    def _removePagesWindow(self):
-
-        if self._get_selected_pdf() != "":
-
-            text, ok = QtWidgets.QInputDialog.getText(self._MainWindow, 'Input Dialog', 'Pages ?')
-
-            if ok:
-                remove_pages(self._get_selected_pdf(), text)
-
-                msg = QtWidgets.QMessageBox()
-                msg.setWindowIcon(QtGui.QIcon(resource_path(self.file_logo)))
-                msg.setWindowTitle("pdf manipulator message box")
-                msg.setText("Votre fichier sans ces pages a été sauvegardé en tant que ./(votre_fichier)_pages_removed.pdf")
-                ret = msg.setStandardButtons(QtWidgets.QMessageBox.Ok)
-                if ret == QtWidgets.QMessageBox.Ok:
-                    msg.close()
-
-                msg.exec_()
-
-        else:
-            msg = QtWidgets.QMessageBox()
-            msg.setWindowIcon(QtGui.QIcon(resource_path(self.file_logo)))
-            msg.setWindowTitle("pdf manipulator message box")
-            msg.setText("Veuillez sélectionner un fichier")
-            ret = msg.setStandardButtons(QtWidgets.QMessageBox.Ok)
-            if ret == QtWidgets.QMessageBox.Ok:
-                msg.close()
-
-            msg.exec_()
-
-        return None
-
-    def _preview(self):
-
-        pdf_name = preview(self._get_selected_pdf())
-        
-        if pdf_name == "":
-            msg = QtWidgets.QMessageBox()
-            msg.setWindowIcon(QtGui.QIcon(resource_path(self.file_logo)))
-            msg.setWindowTitle("pdf manipulator message box")
-            msg.setText("Veuillez sélectionner un fichier à visualiser")
-            ret = msg.setStandardButtons(QtWidgets.QMessageBox.Ok)
-            if ret == QtWidgets.QMessageBox.Ok:
-                msg.close()
-            
-            msg.exec_()
-        
-        return None
-    
-    def _get_files(self):
-        
-        self.pdf_files = []
-        
-        for i, f in enumerate(QtWidgets.QFileDialog.getOpenFileNames()[0]):
-            self.pdf_files.append(f)
-            
-            QtWidgets.QTreeWidgetItem(self._ui.treeWidget_filenames,[str(i + 1),
-                                                                     os.path.dirname(f),
-                                                                     os.path.basename(f)])
-            
-        return None
-    
-    def _update_list(self):
-        
-        # update list of files to be merged
-        self.pdf_files = []
-        root = self._ui.treeWidget_filenames.invisibleRootItem()
-        
-        for i in range(root.childCount()):
-            
-            self.pdf_files.append(os.path.join(root.child(i).text(1),
-                                               root.child(i).text(2)))
-                                             
-        return None
-    
-    def _remove_file(self):
-        
-        root = self._ui.treeWidget_filenames.invisibleRootItem()
-        
-        for elem in self._ui.treeWidget_filenames.selectedItems():
-            (elem.parent() or root).removeChild(elem)
-    
-        self._update_list()
-        
-        return None
-    
-    def _merge(self):
-        
-        # re arange the list in case move 
-        
-        self._update_list()
-        
-        if self.pdf_files == []:
-            msg = QtWidgets.QMessageBox()
-            msg.setWindowIcon(QtGui.QIcon(resource_path(self.file_logo)))
-            msg.setWindowTitle("pdf manipulator message box")
-            msg.setText("Veuillez sélectionner au moins 2 fichiers à fusionner")
-            ret = msg.setStandardButtons(QtWidgets.QMessageBox.Ok)
-            if ret == QtWidgets.QMessageBox.Ok:
-                msg.close()
-
-            msg.exec_()
-        else:
-            pdf = merge(self.pdf_files)
-
-            pdf_name = QtWidgets.QFileDialog.getSaveFileName()[0]
-
-            pdf.save(pdf_name)
-
-            sleep(0.5)
-
-            msg = QtWidgets.QMessageBox()
-
-            if os.path.isfile(pdf_name):
-                msg.setWindowIcon(QtGui.QIcon(resource_path(self.file_logo)))
-                msg.setWindowTitle("pdf manipulator message box")
-                msg.setText("Fusion réussie !")
-                ret = msg.setStandardButtons(QtWidgets.QMessageBox.Ok)
-                if ret == QtWidgets.QMessageBox.Ok:
-                    msg.close()
-
-                msg.exec_()
-        
-        return None
-
-
-if __name__ == "__main__":
-    app = PdfManipulator()
