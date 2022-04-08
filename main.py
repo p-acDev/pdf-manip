@@ -4,6 +4,8 @@ from pdf2image import convert_from_path, convert_from_bytes
 import pytesseract
 import re
 import streamlit as st
+import pandas as pd
+import json
 
 def merge(pdfs):
     
@@ -64,21 +66,35 @@ def gui():
         
         if pdf_file is not None:
             binary = pdf_file.getvalue()
-
-        targets = st.text_input("Entrez vos recherches séparées par des ','")
-
-        if targets is not None:
-            targets = targets.split(',')
         
-        if st.button("Lancer la recherche") and pdf_file is not None and targets is not None:
-            with st.spinner("Wait for it ..."):
 
-                data = extract_text_from_pdf_ocr(binary)
-                output = write_output(data, targets)
+        operation_choice = st.selectbox("Que voulez faire ?",
+        ("-", "Trouver des occurences de mots", "extraire tout le texte"))
 
-                st.success("Recherche terminée")
-                st.text(output)
-    
+        if operation_choice == "Trouver des occurences de mots":
+
+            targets = st.text_input("Entrez vos recherches séparées par des ','")
+
+            if targets is not None:
+                targets = targets.split(',')
+            
+            if st.button("Lancer la recherche") and pdf_file is not None and targets is not None:
+                with st.spinner("Wait for it ..."):
+                    data = extract_text_from_pdf_ocr(binary)
+
+                    output = write_output(data, targets)
+
+                    st.success("Recherche terminée")
+                    st.text(output)
+
+        elif operation_choice == "extraire tout le texte":
+            if st.button("Extraire") and pdf_file is not None:
+                with st.spinner("Wait for it ..."):
+                    data = extract_text_from_pdf_ocr(binary)
+                    text_data = json.dumps(data)
+                    st.success("Extraction terminée")
+                    st.download_button("Télécharger", data=text_data)
+
     elif choice == "fusion":
         st.write("# pdf-fusion")
 
