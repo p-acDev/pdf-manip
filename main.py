@@ -90,7 +90,9 @@ def gui():
 
                 fusion = merge(pdfs)
     
-                fusion.save("fusion.pdf")
+                st.success("PDF fusionné")
+
+
                 with open("fusion.pdf", 'rb') as f:
                     PDFbyte = f.read()
 
@@ -98,7 +100,7 @@ def gui():
                 data=PDFbyte,
                 file_name="fusion.pdf",
                 mime='application/octet-stream')
-                st.success("retrouvez votre pdf fusionné dans votre dossier")
+                
 
 
     return None
