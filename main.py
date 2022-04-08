@@ -1,5 +1,5 @@
 import PyPDF2
-from pdf2image import convert_from_path
+from pdf2image import convert_from_path, convert_from_bytes
 import pytesseract
 import re
 import streamlit as st
@@ -12,10 +12,10 @@ def extract_text_from_pdf_simple(filename):
 
     return data
 
-def extract_text_from_pdf_ocr(filename):
+def extract_text_from_pdf_ocr(binary):
 
     # first transform pdf to image for image recognition
-    page_images = convert_from_path(filename)
+    page_images = convert_from_bytes(binary)
     
     data = {i: str(((pytesseract.image_to_string(image)))) for i, image in enumerate(page_images)}
 
@@ -40,9 +40,9 @@ def gui():
     st.write("# PDF sniffer")
 
     pdf_file = st.file_uploader("Chargez votre pdf")
-
-    pdf_type = st.radio("Selectionnez votre type de pdf",
-        ('Saisie de texte impossible', 'Saisie de texte possible'))
+    
+    if pdf_file is not None:
+        binary = pdf_file.getvalue()
 
     targets = st.text_input("Entrez vos recherches séparées par des ','")
 
@@ -52,10 +52,7 @@ def gui():
     if st.button("Lancer la recherche") and pdf_file is not None and targets is not None:
         with st.spinner("Wait for it ..."):
 
-            if pdf_type == 'Saisie de texte possible':
-                data = extract_text_from_pdf_simple(pdf_file.name)
-            else:
-                data = extract_text_from_pdf_ocr(pdf_file.name)
+            data = extract_text_from_pdf_ocr(binary)
             output = write_output(data, targets)
 
             st.success("Recherche terminée")
