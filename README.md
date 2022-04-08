@@ -25,3 +25,7 @@ et ensuite faire:
 `pip install pyqt5`
 
 :point_right: https://stackoverflow.com/a/70296259/14823310
+
+## OCR 
+à ajouter sur windows si app en local
+pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesseract.exe'
