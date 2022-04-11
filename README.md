@@ -6,11 +6,19 @@
 
 # Installation
 
-Pour une installation de l'app en local
+Pour une installation de l'app en local:
 
-## Installation des modules python
+### pytesseract
 
-`pip install -r requirements.txt`
+### pdf2image
+
+### installation des lib python
+
+```
+python -m venv venv
+# activate the virual env
+(venv) pip install -r requirements.txt
+(venv) streamlit run main.py
 
 ## OCR 
 
