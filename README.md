@@ -23,6 +23,7 @@ python -m venv venv
 ## OCR 
 
 à ajouter sur windows si app en local
+
 ```
 pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesseract.exe'
 ```
