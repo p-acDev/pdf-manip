@@ -19,11 +19,12 @@ python -m venv venv
 # activate the virual env
 (venv) pip install -r requirements.txt
 (venv) streamlit run main.py
+```
 
 ## OCR 
 
 à ajouter sur windows si app en local
 
 ```
-pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = "C:/Program Files/Tesseract-OCR/tesseract.exe"
 ```
