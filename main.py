@@ -91,9 +91,17 @@ def gui():
             if st.button("Extraire") and pdf_file is not None:
                 with st.spinner("Wait for it ..."):
                     data = extract_text_from_pdf_ocr(binary)
-                    text_data = json.dumps(data)
+                    with open("textData.txt", "w") as f:
+                        for key in data.keys():
+                            f.write("######\n")
+                            f.write(f"page: {key}\n")
+                            f.write("######\n\n")
+                            for s in data[key].split("\n"):
+                                f.write(f"{s}\n")
+                
                     st.success("Extraction terminée")
-                    st.download_button("Télécharger", data=text_data)
+                    with open("textData.txt", "r") as f:
+                        st.download_button("Télécharger", f)
 
     elif choice == "fusion":
         st.write("# pdf-fusion")
