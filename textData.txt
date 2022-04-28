@@ -2,271 +2,59 @@
 page: 0
 ######
 
-viii PREFACE
-
-These include: Dr J. M. R. Graham of Imperial College, London; Dr
-Martin Greenhow of Brunel University, London; Professor Makoto
-Ohkusu of Kyushu University; Professor Paul Sclavounos of MIT;
-Professor Finn Gunnar Nielsen of Norsk Hydro; Professor Enok Palm of
-University of Oslo; Dr John Grue of University of Oslo, Dr Bjorn
-Sortland of Marintek; Siv.ing. Terje Nedrelid of Marintek, Professor
-Bjornar Pettersen of NTH and Professor Dag Myrhaug of NTH.
-Graduate students who have been particularly helpful have been Seung Il
-Ahn, Rong Zhao, Geir Leland, Jan Kvalsvold, Knut Streitlien and Jens
-Bloch Helmers. Rong Zhao has done the calculations presented in
-several of the figures and Vigdis O. Dahl is responsible for the skilful
-drawing of many of the figures. Marianne Kjolaas has typed the many
-versions of the manuscript in an accurate and efficient way.
-
-rt INTRODUCTION
-
-Knowledge about wave induced loads and motions of ships and offshore
-structures is important both in design and operational studies. The
-significant wave height (the mean of the highest one-third of the waves)
-can be larger than 2 m for 60% of the time in hostile areas like the North
-Sea. Wave heights higher than 30m can occur. The mean wave period
-can be from 15 to 20s in extreme weather situations and it is seldom
-below 4s, Environmental loads due to current and wind are also
-important. Extreme wind velocities of 40 to 45 ms~' have to be used in
-the design of offshore structures in the North Sea.
-
-Fig. 1.1 shows five examples of offshore structures. Two of them, the
-jacket type and the gravity platform, penetrate the sea floor. At present,
-fixed structures have been built for water depths up to about 300 m. Two
-of the structures, the semi-submersible and the floating production ship,
-are free-floating. The tension leg platform (TLP) is restrained from
-oscillating vertically by tethers, which are vertical anchorlines that are
-tensioned by the platform buoyancy being larger than the platform
-weight. Both the ship and the semi-submersible are kept in position by a
-spread mooring system. An alternative would be to use thrusters and a
-dynamic positioning system. Pipes (risers) are used as connections
-between equipment on the sea floor and the platform.
-
-Ships serve a large variety of purposes. Examples are transportation of
-goods and passengers, naval operations, drilling, marine operations,
-fishing, sport and leisure activities. Fig. 1.2 shows three types of ships: a
-monohull, a SWATH and a SES. The monohull is exemplified by a
-LNG (liquid natural gas) carrier with spherical tanks. SWATH stands
-for small-waterplane-area, twin-hull ship and consists of two fully-
-submerged hulls that are connected to the above water structure by one
-or several thin struts. Between the hulls there may be fitted fins or foils
-as in Fig. 1.2. SES (surface effect ship) is an air-cushion supported
-
-’ high-speed vehicle where the air-cushion is enclosed on the sides by
+RÃ©capitulatif de la prÃ©-demande de passeport
 
-rigid sidewalls.and on the bow and stern by compliant seals. By high
-speed we mean high Froude number (Fn). This is defined as Fn =
-U/(Lg)i(U = ship speed, L = ship length, g = acceleration of gravity). A
-ship is considered a high-speed marine vehicle when Fn > ~0.5. From a
+Etat civil de la personne majeure ou mineure Ã©mancipÃ©e
 
-######
-page: 1
-######
+PHOTOGRAPHIE
 
-INTRODUCTION
+[w]e [m]
+mairie [m]
 
-Fig. 1.1. Five types of offshore structures. From left to right we have, jacket,
-gravity platform, semi-submersible, floating production ship,
-tension leg platform (TLP). (Partly based on a figure provided by
-Veritec A/S.)
+NÂ° de prÃ©-demande
+40ZX52JKYG
 
-LNG CARRIER
+Photo a
+coller en
 
-Sidewall
+NÂ° du timbre fiscal
+(passeport)
 
-——
-[A Q aN
-Cushion > Bow seal
-p et deck
+2267444547302501
+HOMME
+Nom (de l'acte de naissance) COURBET
 
-Stern seal Rudder or
+PrÃ©nom(s) PIERRE-ANDRE GHISLAIN EDMOND
 
-ventral fin
-SES
+NÃ©(e) le 19/11/1989 A: LILLE
+Taille: 180CM Couleur des yeux VERTE
+DÃ©partement de 59 Pays de naissance FRANCE
 
-Fig. 1.2. Three types of ships. SWATH (small-waterplane area, twin-hull
-ship), LNG (liquid natural gas) carrier, SES (surface effect ship).
+Adresse : 51 RUE DES 80 FUSILLES
+Code postal 62590 Commune OIGNIES
+TÃ©lÃ©phone: 0607480182
 
-DEFINITIONS OF MOTIONS 3
+PERE Nom : COURBET
 
-hydrodynamical view point one can distinguish between ships at zero,
-normal and high speed. SWATH concepts have been designed for both
-normal and high-speed applications.
+PrÃ©nom(s) GERARD GHISLAIN
 
-Most of the applications presented in the main text will deal with ships
-at zero or normal speed and with offshore structures. Applications to
-high-speed marine vehicles will be given by exercises. We will discuss
-both wave-induced loads and motions, with motions being the result of
-integrated hydrodynamic loads on the structure. In the introduction we
-will give a survey of important wave load and seakeeping problems for
-ships and offshore structures. Before doing that we need to define the
-motions. -
+NÃ©le 08/11/1953 A: AULNOYE-AYMERIES (059)
+MERE Nom : CAIL
 
-DEFINITIONS OF MOTIONS
+PrÃ©nom(s) MARIE-FRANGOISE
 
-Motions of floating structures can be divided’ into. wave-frequency
-motion, high-frequency motion, slow-drift motion and mean drift. The
-oscillatory rigid-body translatory motions are referred to as surge, sway
-and heave, with heave being the vertical motion (see Fig. 1.3). The
-oscillatory angular motions are referred to as roll, pitch and yaw, with
-yaw being rotation about a vertical axis. For a ship, surge is the
-longitudinal motion and roll is the angular motion about the longitudinal
-axis.
+NÃ©e le 08/10/1958 A: AULNOYE-AYMERIES (059)
 
-The wave-frequency motion is mainly linearly-excited motion in the
-wave-frequency range of significant wave energy. High-frequency mo-
+Je certifie l'exactitude de ces dÃ©clarations.
+Date 26/04/2022
 
-Fig. 1.3. Definition of rigid-body motion modes. Exemplified for a deep
-concrete floater.
+Signature du demandeur
 
-######
-page: 2
-######
+(A l'encre noire et sans dÃ©border du cadre)
 
-Table 1.1. Resonant heave oscillations of ships, offshore structures and high speed vehicles
+Rappel : Toute fausse dÃ©claration est passible des peines dâ€™emprisonnement et des amendes prÃ©vues par les articles 441-6 et 441-7 du code pÃ©nal. Le droit dâ€™accÃ©s aux
+informations prÃ©vu par la loi nÂ°78-17 du 6 janvier 1978 relative a l'informatique, aux fichiers et aux libertÃ©s, sâ€™exerce auprÃ©s de la prÃ©fecture ou de la sous-prÃ©fecture de
+votre rÃ©sidence.
 
-y
-g
->
-
-SWATH (small
-
-waterplane area twin
-
-Monohull ship
-Catamaran
-
-4-16 s7
-
-TLP (tension leg
-
-SES (surface effect
-
-hull ship)
-
->20s
-
-Semi-submersible
-
->20s
-
-platform)
-2-48
-
-ship)
-<Is
-
-Natural heave period:
-Restoring force:
-
-Elasticity of tethers ‘Waterplane area ‘Waterplane area ‘Waterplane area
-
-Non-linear sum.
-
-Air compressibility
-Linear wave forces
-
-Linear wave forces due
-to low encounter
-frequency between
-ship and waves
-
-Linear wave forces Swell (long waves)
-
-frequency wave
-
-forces
-
-due to high
-
-encounter
-
-frequency between
-
-ship and waves
-‘Ride Control”
-
-Dominating excitation
-mechanism around the
-natural heave period:
-
-Foil control
-
-Wave radiation Viscous effects
-
-Viscous effects
-
-Important damping:
-
-# Rough estimate: V(L/1.5), where L is ship length in metres.
-
-TRADITIONAL SHIP PROBLEMS
-
-tion is significant for TLPs and is often referred to as ‘rins
-‘springing’ and is due to resonance oscillations in heave, pitch ai.
-
-the platform. The restoring forces for the TLP are due to tethers ana
-mass forces due to the platform. The natural periods of these motion
-modes are typically 2-4 which are less than most wave periods. They
-are excited by non-linear wave effects. ‘Ringing’ is associated with
-transient effects and ‘springing’ is steady-state oscillations.
-
-Similar non-linear effects cause slow drift and mean motions in waves
-and current. Wind will also induce slow drift and mean motion. Slow
-drift motion arises from resonance oscillations. For a moored structure it
-occurs in surge, sway and yaw. The restoring forces are due to the
-mooring system and the mass forces due to the structure. Typical
-resonance periods are of the order of 1 to 2 minutes for conventionally
-moored systems.
-
-Heave is an important response variable for many structures. Table
-1.1 illustrates the range of the natural heave periods of different types of
-marine structures. These include SES, TLPs, monohull ships, catamar-
-ans, SWATH ships and semi-submersibles. The table indicates how the
-natural heave oscillations can be excited. For instance for the SES-hull it
-occurs due to high encounter frequency between the ship and the waves,
-while for the SWATH it occurs due to low encounter frequency between
-the ship and the waves. The table also shows what types of restoring
-forces can cause heave resonance. For the SES it is the compressibility
-effect of the air in the cushion. For the monohull ship, catamaran,
-SWATH and semi-submersible it is due to change in buoyancy forces.
-This is related directly to the waterplane area of the vessels. Finally we
-see in Table 1.1 either the most important physical source of natural
-heave damping or how one artificially increases the damping by control
-systems. .
-
-For the SES it is the heave accelerations and not the heave motions
-that are important. If no ‘ride control’ is used, acceleration values of 1.5g
-can occur in relatively calm sea. If the natural heave period is 0.5s, it
-means the heave amplitude is ~0.1 m.
-
-A semi-submersible is designed to avoid resonance heave motion and
-the maximum heave motion in severe sea states will be less than half the
-maximum wave amplitude.
-
-TRADITIONAL SHIP PROBLEMS
-Examples of important seakeeping and wave load problems for ships are
-illustrated in Fig. 1.4. In particular, vertical accelerations and relative
-vertical motions between the ship and the waves are important responses.
-Accelerations determine loads on cargo and equipment and are an
-important reason for seasickness. The relative vertical motions can be
-used to evaluate the possibility and damage due to slamming and water
-
-######
-page: 3
-######
-
-Bonjour test dans la page 1
-
-######
-page: 4
-######
-
-Une autre page avec un autre mot : maison
-
-######
-page: 5
-######
-
-Et une troisiéme encore avec un autre mot chien
+v.SPD-PP-RECAP-MAJ-3.5
 

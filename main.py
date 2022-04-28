@@ -87,8 +87,8 @@ def gui():
                     st.success("Recherche terminée")
                     st.text(output)
 
-        elif operation_choice == "extraire tout le texte":
-            if st.button("Extraire") and pdf_file is not None:
+        elif operation_choice == "Extraire tout le texte":
+            if st.button("Extraire"):
                 with st.spinner("Wait for it ..."):
                     data = extract_text_from_pdf_ocr(binary)
                     with open("textData.txt", "w") as f:
