@@ -69,7 +69,7 @@ def gui():
         
 
         operation_choice = st.selectbox("Que voulez faire ?",
-        ("-", "Trouver des occurences de mots", "extraire tout le texte"))
+        ("-", "Trouver des occurences de mots", "Extraire tout le texte"))
 
         if operation_choice == "Trouver des occurences de mots":
 
